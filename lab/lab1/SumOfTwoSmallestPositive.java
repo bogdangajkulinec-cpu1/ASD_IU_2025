@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class SumOfTwoSmallestPositive {
 
     public static void main(String[] args) {
