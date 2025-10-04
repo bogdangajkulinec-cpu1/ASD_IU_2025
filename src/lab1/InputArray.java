@@ -15,5 +15,4 @@ public class InputArray {
         }
         return array;
     }
-
 }
