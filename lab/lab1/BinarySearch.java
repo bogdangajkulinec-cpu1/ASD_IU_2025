@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class BinarySearch {
     public static void main(String[] args) {
         int[] array = inputArray();
@@ -24,32 +25,31 @@ public class BinarySearch {
         return array;
     }
 
-    public static void insertionSort(int[] arr) {
-        for (int left = 0; left < arr.length; left++) {
-            int value = arr[left];
+    public static void insertionSort(int[] array) {
+        for (int left = 0; left < array.length; left++) {
+            int value = array[left];
             int i = left - 1;
-            for (; i >= 0; i--) {
-                if (value < arr[i]) {
-                    arr[i + 1] = arr[i];
+            for (int i = 0; i >= 0; i--) {
+                if (value < array[i]) {
+                    arr[i + 1] = array[i];
                 } else {
                     break;
                 }
             }
-            arr[i + 1] = value;
+            array[i + 1] = value;
         }
     }
 
-    public static void printArray(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
         System.out.println();
     }
 
     public static int inputNumber() {
         Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
-        return number;
+        return  scanner.nextInt();;
     }
 
     public static void binarySearch(int[] array, int number){
@@ -62,11 +62,9 @@ public class BinarySearch {
                 System.out.println("Элемент " + number + " найден");
                 flag = true;
                 break;
-            }
-            else if(array[middleNumber] < number){
+            } else if(array[middleNumber] < number){
                 leftBorder = middleNumber + 1;
-            }
-            else {
+            } else {
                 rightBorder = middleNumber - 1;
             }
         }
@@ -75,21 +73,19 @@ public class BinarySearch {
         }
     }
 
-    public static int recursiveBinarySearch(int arr[], int leftBorder, int rightBorder, int number){
+    public static int recursiveBinarySearch(int array[], int leftBorder, int rightBorder, int number){
         if (leftBorder > rightBorder) {
             System.out.println("Элемент " + number + " не найден");
             return -1;
         }
         int middleNumber = (leftBorder + rightBorder) / 2;
-        if (arr[middleNumber] == number){
+        if (array[middleNumber] == number){
             System.out.println("Элемент " + number + " найден");
             return middleNumber;
-        }
-        else if(arr[middleNumber] < number){
-            return recursiveBinarySearch(arr, middleNumber + 1, rightBorder, number);
-        }
-        else {
-            return recursiveBinarySearch(arr, leftBorder, middleNumber - 1, number);
+        } else if(array[middleNumber] < number){
+            return recursiveBinarySearch(array, middleNumber + 1, rightBorder, number);
+        } else {
+            return recursiveBinarySearch(array, leftBorder, middleNumber - 1, number);
         }
     }
 }

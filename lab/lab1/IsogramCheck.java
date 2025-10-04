@@ -5,10 +5,12 @@ public class IsogramCheck {
         String input = inputString();
         isIsogramCheck(input);
     }
+
     public static String inputString() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
     public static void isIsogramCheck(String inputString) {
         if (inputString.isEmpty()) {
             System.out.println("Строка является изограммой");

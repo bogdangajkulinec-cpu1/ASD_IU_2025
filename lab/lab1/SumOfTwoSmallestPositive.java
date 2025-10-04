@@ -1,6 +1,6 @@
 import java.util.Scanner;
-public class SumOfTwoSmallestPositive {
 
+public class SumOfTwoSmallestPositive {
     public static void main(String[] args) {
         int array [] = inputArray();
         sumOfTwoSmallestPositives(array);
@@ -18,6 +18,7 @@ public class SumOfTwoSmallestPositive {
         }
         return array;
     }
+
     public static void sumOfTwoSmallestPositives(int[] arr) {
             if (arr == null || arr.length < 5) {
                 System.out.println("Массив должен содержать минимум 5 элементов");

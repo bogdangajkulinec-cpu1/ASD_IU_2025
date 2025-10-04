@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class ConvertToBase {
     public static void main(String[] args) {
         System.out.println("Введите десятичное число: ");
@@ -7,10 +8,12 @@ public class ConvertToBase {
         int inputNewBase = inputNumber();
         convertToBase(inputDecimalNumber,inputNewBase);
     }
+
     public static int inputNumber() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
+
     public static void convertToBase(int decimalNumber, int newBase) {
         if (newBase < 2 || newBase > 9) {
             System.out.println("Ошибка: основание системы счисления должно быть от 2 до 9");
