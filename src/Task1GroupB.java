@@ -1,4 +1,4 @@
-import lab1.InputArray;
+import newrep.InputArray;
 
 public class Task1GroupB {
     public static void main(String[] args) {
