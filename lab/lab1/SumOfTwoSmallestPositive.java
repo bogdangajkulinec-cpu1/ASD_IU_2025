@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class SumOfTwoSmallestPositive {
+public class SumOfTwoSmallestInArray {
     public static void main(String[] args) {
         int array [] = inputArray();
-        sumOfTwoSmallestPositives(array);
+        sumOfTwoSmallestInArray(array);
     }
 
     public static int[] inputArray() {
@@ -19,28 +19,28 @@ public class SumOfTwoSmallestPositive {
         return array;
     }
 
-    public static void sumOfTwoSmallestPositives(int[] arr) {
-            if (arr == null || arr.length < 5) {
+    public static void sumOfTwoSmallestInArray(int[] array) {
+            if (array == null || array.length < 5) {
                 System.out.println("Массив должен содержать минимум 5 элементов");
                 return;
             }
-            int smallest = Integer.MAX_VALUE;
-            int secondSmallest = Integer.MAX_VALUE;
-            for (int i = 0; i < arr.length; i++) {
-                int current = arr[i];
-                if (current > 0) {
-                    if (current < smallest) {
-                        secondSmallest = smallest;
-                        smallest = current;
-                    } else if (current < secondSmallest && current != smallest) {
-                        secondSmallest = current;
+            int smallestElement = Integer.MAX_VALUE;
+            int secondSmallestElement = Integer.MAX_VALUE;
+            for (int i = 0; i < array.length; i++) {
+                int currentElement = array[i];
+                if (currentElement > 0) {
+                    if (currentElement < smallestElement) {
+                        secondSmallestElement = smallestElement;
+                        smallestElement = currentElement;
+                    } else if (currentElement < secondSmallestElement && currentElement != smallestElement) {
+                        secondSmallestElement = currentElement;
                     }
                 }
             }
-            if (smallest == Integer.MAX_VALUE || secondSmallest == Integer.MAX_VALUE) {
+            if (smallestElement == Integer.MAX_VALUE || secondSmallestElement == Integer.MAX_VALUE) {
                 System.out.println("В массиве должно быть минимум 2 положительных числа");
             }
-            System.out.println(smallest + secondSmallest);
+            System.out.println(smallestElement + secondSmallestElement);
         }
     }
 
