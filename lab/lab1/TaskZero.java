@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BinarySearch {
+public class TaskZero {
     public static void main(String[] args) {
         int[] array = inputArray();
         insertionSort(array);
