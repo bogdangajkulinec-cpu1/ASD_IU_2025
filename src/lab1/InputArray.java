@@ -1,6 +1,5 @@
 package lab1;
 import java.util.Scanner;
-
 public class InputArray {
     public static void main(String[] args) {
     }
