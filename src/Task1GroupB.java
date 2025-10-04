@@ -1,24 +1,11 @@
-import java.util.Scanner;
+import lab1.InputArray;
 
 public class Task1GroupB {
     public static void main(String[] args) {
-        int[] array = inputArray();
+        int[] array = InputArray.inputArray();
         System.out.println("Число,равное количеству вхождений в массив: ");
         System.out.println(findFrequencyNumber(array));
     }
-    public static int[] inputArray() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите длину массива: ");
-        int length = scanner.nextInt();
-        int[] array = new int[length];
-        System.out.println("Введите " + length + " элементов массива:");
-        for (int i = 0; i < length; i++) {
-            System.out.print("Элемент [" + i + "]: ");
-            array[i] = scanner.nextInt();
-        }
-        return array;
-    }
-
     public static int findFrequencyNumber(int[] array) {
         if (array.length == 0) {
             return -1;
