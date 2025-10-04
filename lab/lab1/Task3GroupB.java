@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SumOfTwoSmallestInArray {
+public class Task3GroupB {
     public static void main(String[] args) {
         int array [] = inputArray();
         sumOfTwoSmallestInArray(array);
