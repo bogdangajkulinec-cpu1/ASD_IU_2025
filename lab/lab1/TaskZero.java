@@ -8,7 +8,12 @@ public class TaskZero {
         printArray(array);
         System.out.println("Введите элемент: ");
         int number = inputNumber();
-        binarySearch(array, number);
+        int index = binarySearch(array, number);
+        if (index != -1) {
+            System.out.println("Элемент " + number + " с индексом " + index + " найден");
+        } else {
+            System.out.println("Элемент " + number + " не найден");
+        }
         recursiveBinarySearch(array, 0,array.length-1, number);
     }
 
@@ -29,9 +34,9 @@ public class TaskZero {
         for (int left = 0; left < array.length; left++) {
             int value = array[left];
             int i = left - 1;
-            for (int i = 0; i >= 0; i--) {
+            for (; i >= 0; i--) {
                 if (value < array[i]) {
-                    arr[i + 1] = array[i];
+                    array[i + 1] = array[i];
                 } else {
                     break;
                 }
@@ -49,29 +54,26 @@ public class TaskZero {
 
     public static int inputNumber() {
         Scanner scanner = new Scanner(System.in);
-        return  scanner.nextInt();;
+        return  scanner.nextInt();
     }
 
-    public static void binarySearch(int[] array, int number){
+    public static int binarySearch(int[] array, int number){
         int leftBorder = 0;
         int rightBorder = array.length - 1;
-        boolean flag = false;
+
         while (leftBorder <= rightBorder) {
-            int middleNumber = (leftBorder + rightBorder) / 2;
-            if (array[middleNumber] == number){
-                System.out.println("Элемент " + number + " найден");
-                flag = true;
-                break;
-            } else if(array[middleNumber] < number){
-                leftBorder = middleNumber + 1;
+            int middleIndex = (leftBorder + rightBorder) / 2;
+            if (array[middleIndex] == number){
+                return middleIndex;
+            } else if(array[middleIndex] < number){
+                leftBorder = middleIndex + 1;
             } else {
-                rightBorder = middleNumber - 1;
+                rightBorder = middleIndex - 1;
             }
         }
-        if (flag != true) {
-            System.out.println("Элемент " + number + " не найден");
-        }
+        return -1;
     }
+
 
     public static int recursiveBinarySearch(int array[], int leftBorder, int rightBorder, int number){
         if (leftBorder > rightBorder) {
