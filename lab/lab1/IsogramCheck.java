@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class IsogramCheck {
     public static void main(String[] args) {
         String input = inputString();

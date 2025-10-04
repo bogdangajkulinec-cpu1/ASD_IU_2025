@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class ConvertToBase {
     public static void main(String[] args) {
         System.out.println("Введите десятичное число: ");

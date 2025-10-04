@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class FrequencyValueMatch {
     public static void main(String[] args) {
         int[] array = inputArray();
