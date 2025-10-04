@@ -1,4 +1,4 @@
-package lab1;
+package newrep;
 import java.util.Scanner;
 public class InputArray {
     public static void main(String[] args) {
