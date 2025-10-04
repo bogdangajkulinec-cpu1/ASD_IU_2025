@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class InputArray {
     public static void main(String[] args) {
     }
+
     public static int[] inputArray() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите длину массива: ");
