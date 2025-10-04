@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class FrequencyValueMatch {
+public class Task1GroupB {
     public static void main(String[] args) {
         int[] array = inputArray();
         System.out.println("Число,равное количеству вхождений в массив: ");
