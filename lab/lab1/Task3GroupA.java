@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class IsogramCheck {
+public class Task3GroupA {
     public static void main(String[] args) {
         String input = inputString();
         isIsogramCheck(input);
