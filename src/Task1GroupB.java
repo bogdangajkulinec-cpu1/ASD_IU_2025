@@ -6,7 +6,6 @@ public class Task1GroupB {
         System.out.println("Число,равное количеству вхождений в массив: ");
         System.out.println(findFrequencyNumber(array));
     }
-
     public static int[] inputArray() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите длину массива: ");

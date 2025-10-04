@@ -5,7 +5,6 @@ public class Task3GroupB {
         int array [] = inputArray();
         sumOfTwoSmallestPositives(array);
     }
-
     public static int[] inputArray() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите длину массива: ");

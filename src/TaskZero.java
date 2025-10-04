@@ -11,7 +11,6 @@ public class  TaskZero {
         binarySearch(array, number);
         recursiveBinarySearch(array, 0,array.length-1, number);
     }
-
     public static int[] inputArray() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите длину массива: ");

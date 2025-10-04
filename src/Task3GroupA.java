@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Task3GroupA {
     public static void main(String[] args) {
         String input = inputString();
