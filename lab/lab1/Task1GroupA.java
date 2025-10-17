@@ -6,7 +6,10 @@ public class Task1GroupA {
         int inputDecimalNumber = inputNumber();
         System.out.println("Введите новую систему счисления(от 2 до 9): ");
         int inputNewBase = inputNumber();
-        convertToBase(inputDecimalNumber,inputNewBase);
+        int convertedNumber = convertToBase(inputDecimalNumber, inputNewBase);
+        if (convertedNumber != -1) {
+            System.out.println("Число в указанной системе счисления: " + convertedNumber);
+        }
     }
 
     public static int inputNumber() {
@@ -14,24 +17,26 @@ public class Task1GroupA {
         return scanner.nextInt();
     }
 
-    public static void convertToBase(int decimalNumber, int newBase) {
+    public static int convertToBase(int decimalNumber, int newBase) {
         if (newBase < 2 || newBase > 9) {
             System.out.println("Ошибка: основание системы счисления должно быть от 2 до 9");
-            return;
+            return -1; // Возвращаем -1 как индикатор ошибки
         }
         if (decimalNumber == 0) {
-            System.out.println(decimalNumber);
-            return;
+            return 0;
         }
-        StringBuilder result = new StringBuilder();
+        int result = 0;
+        int multiplier = 1;
         while (decimalNumber > 0) {
             int remainder = decimalNumber % newBase;
-            result.insert(0, remainder);
+            result = result + remainder * multiplier;
             decimalNumber = decimalNumber / newBase;
+            multiplier *= 10;
         }
-        System.out.println("Число в указанной системе счисления: " + result);
+        return result;
     }
 }
+
 /*
 1 Реализуйте метод, входными данными которого являются два числа N и M,
 где N – число в десятичной системе исчисления, а M – число в диапазоне от
