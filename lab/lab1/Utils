@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class InputArray {
+public class Utils {
 
     public static int[] inputArray() {
         Scanner scanner = new Scanner(System.in);
