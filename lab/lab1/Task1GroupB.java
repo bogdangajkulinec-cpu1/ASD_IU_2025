@@ -1,8 +1,7 @@
 public class Task1GroupB {
 
     public static void main(String[] args) {
-            InputArray input = new InputArray();
-            int[] array = input.inputArray();
+            int[] array = Utils.inputArray();
             System.out.println("Число,равное количеству вхождений в массив: ");
             System.out.println(findFrequencyNumber(array));
     }
