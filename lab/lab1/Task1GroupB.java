@@ -1,17 +1,17 @@
-import java.util.Scanner;
-import java.lab.InputArray
 public class Task1GroupB {
+
     public static void main(String[] args) {
-        int[] array = InputArray.inputArray();
-        System.out.println("Число,равное количеству вхождений в массив: ");
-        System.out.println(findFrequencyNumber(array));
+            InputArray input = new InputArray();
+            int[] array = input.inputArray();
+            System.out.println("Число,равное количеству вхождений в массив: ");
+            System.out.println(findFrequencyNumber(array));
     }
 
     public static int findFrequencyNumber(int[] array) {
         if (array.length == 0) {
             return -1;
         }
-        int maxNumber = -1;
+        int maxNumber = -1;    
         for (int i = 0; i < array.length; i++) {
             int currentNumber = array[i];
             int frequency = 0;
