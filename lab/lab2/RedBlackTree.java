@@ -7,29 +7,6 @@ public class RedBlackTree {
     private static final boolean RED = true;
     private static final boolean BLACK = false;
 
-    public static void main(String[] args) {
-        RedBlackTree tree = new RedBlackTree();
-        int[] values = {7, 3, 18, 10, 22, 8, 11, 26};
-        System.out.println("Вставляем элементы: ");
-        for (int value : values) {
-            System.out.print(value + " ");
-            tree.insertElement(value);
-        }
-        System.out.println();
-        System.out.println("Является валидным красно-черным деревом: " + tree.isValidRedBlackTree());
-        System.out.println();
-        System.out.println("Содержит 10: " + tree.contains(10));
-        System.out.println("Содержит 15: " + tree.contains(15));
-        System.out.println();
-        System.out.println("Обход в порядке возрастания:");
-        tree.printInOrder();
-        System.out.println();
-        System.out.println("Удаляем 18:");
-        tree.deleteElement(18);
-        System.out.println();
-        System.out.println("Является валидным красно-черным деревом после удаления: " + tree.isValidRedBlackTree());
-    }
-
     /**
      * Класс узла красно-черного дерева.
      * Каждый узел содержит данные, ссылки на потомков, родителя и цвет.
@@ -40,7 +17,7 @@ public class RedBlackTree {
         boolean color;
 
         /**
-         * Конструктор узла.
+         * Конструктор узла
          */
         Node(int data) {
             this.data = data;
@@ -453,23 +430,102 @@ public class RedBlackTree {
             System.out.println("Нарушение: неравные черные высоты у узла " + node.data);
             return -1;
         }
-
         // Возвращаем черную высоту текущего поддерева
         return leftBlackHeight + (node.color == BLACK ? 1 : 0);
     }
+    public void printTree() {
+        printTree(root, "", true, true);
+    }
+
+    /**
+     * Рекурсивный метод для графического отображения структуры дерева.
+     */
+    private void printTree(Node node, String prefix, boolean isLast, boolean isRoot) {
+        if (node != NIL) {
+            // Выводим текущий узел
+            System.out.print(prefix);
+
+            if (isRoot) {
+                System.out.print("Корень─── ");
+            } else if (isLast) {
+                System.out.print("└── ");
+                prefix += "    ";
+            } else {
+                System.out.print("├── ");
+                prefix += "│   ";
+            }
+
+            String color = node.color == RED ? "R" : "B";
+            System.out.println(node.data + "(" + color + ")");
+
+            boolean hasRightChild = node.right != NIL;
+            boolean hasLeftChild = node.left != NIL;
+
+            if (hasLeftChild || hasRightChild) {
+                if (hasLeftChild) {
+                    printTree(node.left, prefix, !hasRightChild, false);
+                }
+                if (hasRightChild) {
+                    printTree(node.right, prefix, true, false);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        RedBlackTree tree = new RedBlackTree();
+        int[] values = {7, 3, 18, 10, 22, 8, 11, 26};
+        System.out.println("Вставляем элементы: ");
+        for (int value : values) {
+            System.out.print(value + " ");
+            tree.insertElement(value);
+        }
+        System.out.println();
+        System.out.println("Является валидным красно-черным деревом: " + tree.isValidRedBlackTree());
+        System.out.println();
+        System.out.println("Содержит 10: " + tree.contains(10));
+        System.out.println("Содержит 15: " + tree.contains(15));
+        System.out.println();
+        System.out.println("Обход в порядке возрастания:");
+        tree.printInOrder();
+        tree.printTree();
+        System.out.println("Удаляем 18:");
+        tree.deleteElement(18);
+        System.out.println("Снова обходим в порядке возрастания:");
+        tree.printInOrder();
+        tree.printTree();
+        System.out.println("Является валидным красно-черным деревом после удаления: " + tree.isValidRedBlackTree());
+    }
 }
-/*Вывод программы:
-Вставляем элементы:
-7 3 18 10 22 8 11 26
+/*
+Вставляем элементы: 
+7 3 18 10 22 8 11 26 
 Является валидным красно-черным деревом: true
 
 Содержит 10: true
 Содержит 15: false
 
 Обход в порядке возрастания:
-3(B) 7(B) 8(R) 10(B) 11(R) 18(R) 22(B) 26(R)
-
+3(B) 7(B) 8(R) 10(B) 11(R) 18(R) 22(B) 26(R) 
+Корень─── 7(B)
+├── 3(B)
+└── 18(R)
+    ├── 10(B)
+    │   ├── 8(R)
+    │   └── 11(R)
+    └── 22(B)
+        └── 26(R)
 Удаляем 18:
-
+Снова обходим в порядке возрастания:
+3(B) 7(B) 8(R) 10(B) 11(R) 22(R) 26(B) 
+Корень─── 7(B)
+├── 3(B)
+└── 22(R)
+    ├── 10(B)
+    │   ├── 8(R)
+    │   └── 11(R)
+    └── 26(B)
 Является валидным красно-черным деревом после удаления: true
+
  */
+
