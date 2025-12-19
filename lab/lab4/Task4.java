@@ -6,13 +6,15 @@ import java.util.Scanner;
 
 public class Task4 {
 
-
     public static Queue<Tree.Node> createLinkedList(Tree.Node root) {
         Queue<Tree.Node> queue = new LinkedList<>();
-        queue.add(root);
+        if (root != null) {
+            queue.add(root);
+        }
         return queue;
     }
 
+   // Рекурсивный BFS
     public static boolean recursiveBFS(Queue<Tree.Node> queue, int target) {
         if (queue.isEmpty()) {
             return false;
@@ -35,12 +37,12 @@ public class Task4 {
         return recursiveBFS(queue, target);
     }
 
+    // Итеративный BFS
     public static boolean iterativeBFS(Tree.Node root, int target) {
-        if (root == null) return false;
-
-        Queue<Tree.Node> queue = new LinkedList<>();
-        queue.add(root);
-
+        if (root == null) {
+            return false;
+        }
+        Queue<Tree.Node> queue = createLinkedList(root);
         while (!queue.isEmpty()) {
             Tree.Node node = queue.poll();
 
@@ -48,7 +50,6 @@ public class Task4 {
                 System.out.println("Элемент найден итеративным алгоритмом: " + node.data);
                 return true;
             }
-
             if (node.left != null) {
                 queue.add(node.left);
             }
@@ -56,7 +57,6 @@ public class Task4 {
                 queue.add(node.right);
             }
         }
-
         return false;
     }
 
