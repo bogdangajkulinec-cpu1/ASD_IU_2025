@@ -1,16 +1,33 @@
 import java.util.Scanner;
 
 public class Utils {
+
     public static Tree createTree(Scanner scanner) {
         Tree tree = new Tree();
 
-        System.out.print("Введите количество узлов ");
-        int n = scanner.nextInt();
+        int countNode = -1;
+        boolean validInput = false;
 
-        System.out.println("Введите значения узлов ");
+        while (!validInput) {
+            System.out.print("Введите количество узлов: ");
 
-        for (int i = 0; i < n; i++) {
-            int val = scanner.nextInt();
+            if (scanner.hasNextInt()) {
+                countNode = scanner.nextInt();
+                if (countNode >= 0) {
+                    validInput = true;
+                } else {
+                    System.out.println("Количество узлов не может быть отрицательным.");
+                }
+            } else {
+                System.out.println("Ошибка ввода. Введите целое число.");
+                scanner.next();
+            }
+        }
+
+        System.out.println("Введите значения узлов: ");
+
+        for (int i = 0; i < countNode; i++) {
+            int val = readInt(scanner, "Узел " + (i + 1) + ": ");
             tree.insert(val);
         }
 
@@ -19,26 +36,47 @@ public class Utils {
 
     // Ввод элемента для поиска
     public static int inputTarget(Scanner scanner) {
-        System.out.print("\nВведите элемент для поиска: ");
-        return scanner.nextInt();
+        return readInt(scanner, "\nВведите элемент для поиска: ");
     }
 
-    // Метод для печати дерева
+    private static int readInt(Scanner scanner, String message) {
+        boolean valid = false;
+        int value = 0;
+
+        while (!valid) {
+            System.out.print(message);
+
+            if (scanner.hasNextInt()) {
+                value = scanner.nextInt();
+                valid = true;
+            } else {
+                System.out.println("Ошибка ввода");
+                scanner.next(); // очистка неверного ввода
+            }
+        }
+        return value;
+    }
+
+    // Печать дерева
     public static void printInOrder(Tree.Node node) {
         printInOrderRecursive(node, 0);
     }
-    // Внутренний рекурсивный метод
     private static void printInOrderRecursive(Tree.Node node, int level) {
         if (node == null) {
             return;
         }
-        printInOrderRecursive(node.left, level + 1);
-
+        // Сначала правый потомок
+        printInOrderRecursive(node.right, level + 1);
         for (int i = 0; i < level; i++) {
             System.out.print("    ");
         }
-        System.out.println(node.data);
 
-        printInOrderRecursive(node.right, level + 1);
+        if (level == 0) {
+            System.out.println("[" + node.data + "]");
+        } else {
+            System.out.println(node.data);
+        }
+        // Левый потомок
+        printInOrderRecursive(node.left, level + 1);
     }
 }
